@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(255, 80, 251);
+        }
+
+        .rooms {
+            display: grid;
+            width: 160px;
+            margin: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+        }
+
+        .room-button {
+            width: 100%;
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+        }
+
+        .h {
+            width: 100%;
+            text-align: center;
+            font-weight: 300;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<h2 class="h">НИЧЕРТА НЕТ ПАКА</h2>
+<div class="rooms">
+    <!-- https://conf.infra.m2.ru/pages/viewpage.action?pageId=71017052 -->
+    <div class="room-cell"><button class="room-button">1</button></div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
