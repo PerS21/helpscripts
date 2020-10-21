@@ -1,7 +1,7 @@
 {
-  "name": "M2 Peregovorki",
+  "name": "Скрипты",
   "version": "1.0",
-  "description": "Ссылки на переговорки в зуме",
+  "description": "Скрипты на заполнение",
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {

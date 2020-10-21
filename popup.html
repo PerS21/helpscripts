@@ -11,7 +11,7 @@
 
         .rooms {
             display: grid;
-            width: 160px;
+            width: 200px;
             margin: 10px;
             grid-template-columns: repeat(3, 1fr);
             grid-column-gap: 10px;
@@ -36,8 +36,9 @@
 <body>
 <h2 class="h">НИЧЕРТА НЕТ ПАКА</h2>
 <div class="rooms">
-    <!-- https://conf.infra.m2.ru/pages/viewpage.action?pageId=71017052 -->
-    <div class="room-cell"><button class="room-button">1</button></div>
+    <div class="room-cell">
+        <button class="room-button">1<img src="img/edit.png" height="20" align="top">1</img></button>
+    </div>
 </div>
 <script src="popup.js"></script>
 </body>
