@@ -3,30 +3,25 @@
 <head>
     <meta charset="utf-8"/>
     <style>
-        html, body {
+        body {
             margin: 0;
             padding: 0;
-            background-color: rgb(255, 80, 251);
+            background-color: rgba(64, 63, 255, 1);
         }
 
-        .rooms {
-            display: grid;
-            width: 200px;
-            margin: 10px;
-            grid-template-columns: repeat(3, 1fr);
-            grid-column-gap: 10px;
-            grid-row-gap: 10px;
+        .rooms{
+            width: 300px;
+            text-align: center;
+            padding: 10px;
         }
 
         .room-button {
-            width: 100%;
             font-size: 17px;
             font-family: Arial, Helvetica, sans-serif;
             cursor: pointer;
         }
 
         .h {
-            width: 100%;
             text-align: center;
             font-weight: 300;
             font-family: Arial, Helvetica, sans-serif;
@@ -36,9 +31,10 @@
 <body>
 <h2 class="h">НИЧЕРТА НЕТ ПАКА</h2>
 <div class="rooms">
-    <div class="room-cell">
-        <button class="room-button">1<img src="img/edit.png" height="20" align="top">1</img></button>
-    </div>
+    <button class="room-button" data-script="SBR_escr.js"><img src="img/edit.png" height="20" align="top">SBR_escr</img></button>
+    <button class="room-button" data-script="SBR_noSaller.js"><img src="img/edit.png" height="20" align="top">SBR_noSaller</img></button>
+    <button class="room-button" data-script="SBR_no_escr_entity.js"><img src="img/edit.png" height="20" align="top">SBR_no_escr_entity</img></button>
+    <button class="room-button" data-script="SBR_no_escr_physical.js"><img src="img/edit.png" height="20" align="top">SBR_no_escr_physical</img></button>
 </div>
 <script src="popup.js"></script>
 </body>

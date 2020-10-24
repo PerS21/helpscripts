@@ -11,5 +11,8 @@
       "128": "img/edit.png"
     }
   },
+  "permissions": [
+    "activeTab"
+  ],
   "manifest_version": 2
 }
