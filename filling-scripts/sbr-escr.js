@@ -1,5 +1,4 @@
-javascript:
-    (() => {
+function fn(){
         const random = (min, max) => Math.round(Math.random() * (max - min) + min);
         const xx = (min, max) => `0${random(min, max)}`.substr(-2);
 
@@ -73,4 +72,4 @@ javascript:
             }
             input.dispatchEvent(event);
         }
-    })();
+    }

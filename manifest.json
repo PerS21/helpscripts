@@ -12,7 +12,10 @@
     }
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "http://localhost:5000/",
+    "http://*/",
+    "http://192.168.1.70:5000/"
   ],
   "manifest_version": 2
 }
