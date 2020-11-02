@@ -1,4 +1,4 @@
-3function fn(){
+function fn(){
         const random = (min, max) => Math.round(Math.random() * (max - min) + min);
         const xx = (min, max) => `0${random(min, max)}`.substr(-2);
 
