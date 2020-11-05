@@ -2,65 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: rgba(64, 63, 255, 1);
-        }
-
-        .fillers{
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .filler {
-            font-size: 17px;
-            font-family: Arial, Helvetica, sans-serif;
-            cursor: pointer;
-            line-height: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .h {
-            text-align: center;
-            font-weight: 300;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .icon path{
-            fill:#1E81CE;
-        }
-
-        .icon{
-            display: inline-block;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="popup.css"/>
 </head>
 <body>
 <h2 class="h">НИЧЕРТА НЕТ ПАКА</h2>
-<div class="fillers">
-    <button class="filler" data-script="sbr-escr.js"><img src="img/padlock.png" height="20" align="top"></img>
-        <svg class="icon" height="25" width="25">
-            <path d="M15 7v3H9V7a3 3 0 116 0zm-9 3V7a6 6 0 1112 0v3h3v12H3V10h3zm5 4a1 1 0 112 0v4a1 1 0 11-2 0v-4z"></path>
-        </svg>SBR_escr</button>
-    <button class="filler" data-script="sbr-noSaller.js"><img src="img/padlock.png" height="20" align="top"></img>SBR_noSaller</button>
-    <button class="filler" data-script="sbr-no-escr-entity.js"><img src="img/padlock.png" height="20" align="top"></img>SBR_no_escr_entity</button>
-    <button class="filler" data-script="sbr-no-escr-physical.js"><img src="img/padlock.png" height="20" align="top"></img>SBR_no_escr_physical</button>
-    <button class="filler" data-script="filling-dkp.js">
-        <img src="img/contract.svg" height="20" align="top"/>
-        <svg class="icon" height="25" width="25">
-            <path d="M2 2v20h13.172L11 17.828V13h4.828L18 15.172V8l-6-6H2zm11 13v2l5.146 5.146 2-2L15 15h-2zm7.854 5.854l-2 2 1 1a.5.5 0 00.707 0l1.293-1.293a.5.5 0 000-.707l-1-1z"></path>
-        </svg>
-        DKP</button>
+<div class="root">
 </div>
 <script src="popup.js"></script>
 </body>
