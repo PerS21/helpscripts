@@ -1,4 +1,7 @@
-function fn(){
+({
+    label: "СБР с эскроу",
+    urlRe : /\/secure-payment-service\/deals\/.*/,
+    code : function fn() {
         const random = (min, max) => Math.round(Math.random() * (max - min) + min);
         const xx = (min, max) => `0${random(min, max)}`.substr(-2);
 
@@ -24,7 +27,7 @@ function fn(){
         const inputs = Array.from(document.querySelectorAll('input'));
         inputs.forEach(input => {
             const mapping = {
-                "realtyObjects[0].cadastralNumber":() => '11:22:333333:44',
+                "realtyObjects[0].cadastralNumber": () => '11:22:333333:44',
                 "buyer.person.passport.name.secondName": () => "Тестовый",
                 "buyer.person.passport.name.firstName": () => "Тест",
                 'buyer.person.passport.name.patronymic': () => "Тестович",
@@ -61,10 +64,11 @@ function fn(){
                 type(input, mapping[fieldName]());
             }
         });
+
         function type(input, value) {
             const lastValue = input.value;
             input.value = value;
-            const event = new Event('input', { bubbles: true });
+            const event = new Event('input', {bubbles: true});
             event.simulated = true;
             const tracker = input._valueTracker;
             if (tracker) {
@@ -73,3 +77,4 @@ function fn(){
             input.dispatchEvent(event);
         }
     }
+});
