@@ -6,7 +6,7 @@
 //     {label:"DKP", script:"dkp.js", image:"contract.svg", urlRe: /\/contract-kit\/contracts\/.*/},
 //     ];
 
-chrome.storage.sync.get('scripts', function(scripts) {
+chrome.storage.sync.get('scripts', function({scripts}) {
     console.log(Array.isArray(scripts))
 });
 

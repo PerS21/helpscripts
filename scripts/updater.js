@@ -1,7 +1,7 @@
 const CURRENT_VERSION = '2020.11.12';
 
-chrome.storage.sync.get('version', async function (storedVersion) {
-    if(storedVersion === CURRENT_VERSION) {
+chrome.storage.sync.get('version', async function ({ version }) {
+    if(version === CURRENT_VERSION) {
         return;
     }
 
