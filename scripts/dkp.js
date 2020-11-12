@@ -88,5 +88,5 @@ export default {
     test: (url) => {
         return /\/secure-payment-service\/deals\/.*/.test(url);
     },
-    script
+    script: String(script)
 }

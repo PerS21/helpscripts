@@ -8,6 +8,7 @@
 
 chrome.storage.sync.get('scripts', function({scripts}) {
     console.log(Array.isArray(scripts))
+    console.log(scripts)
 });
 
 
