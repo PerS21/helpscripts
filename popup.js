@@ -17,7 +17,7 @@ chrome.tabs.query({active:true},(tabs)=>{
             return;
         }
         const filterScripts = scripts.filter((scriptProps)=>{
-            alert(scriptProps.urlsRules);
+            alert(scriptProps.urlsRules)
             return scriptProps.urlsRules.some((rule)=>{
                 new RegExp(rule).test(url);
             });
@@ -26,8 +26,8 @@ chrome.tabs.query({active:true},(tabs)=>{
     });
 });
 
-// const displayButtons = (buttons)=> {
-//     buttons.forEach(async (buttonProps) => {
+// const displayButtons = (scripts)=> {
+//     scripts.forEach(async (buttonProps) => {
 //         const button = document.createElement('button');
 //         button.setAttribute('data-script', buttonProps.script);
 //         button.innerHTML = buttonProps.label;
@@ -36,7 +36,7 @@ chrome.tabs.query({active:true},(tabs)=>{
 //         img.src = `img/${buttonProps.image}`;
 //         button.prepend(img);
 //         rootElement.append(button);
-
+//
 //         const promise = await fetch(`https://pers21.github.io/helpscripts/scripts/${buttonProps.script}`, {});
 //         const body = await promise.text();
 //         chrome.storage.sync.set({[buttonProps.script]: body}, function() {

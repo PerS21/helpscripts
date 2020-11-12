@@ -1,4 +1,4 @@
-const CURRENT_VERSION = '2020.11.12-3';
+const CURRENT_VERSION = '2020.11.12-4';
 
 chrome.storage.sync.get('version', async function ({ version }) {
     if(version === CURRENT_VERSION) {
