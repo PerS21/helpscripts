@@ -5,7 +5,7 @@ chrome.storage.sync.get('version', async function ({ version }) {
         return;
     }
 
-    const dkp = await import('./dkp.js');
+    const { default: dkp } = await import('./dkp.js');
 
     console.log(dkp);
 
