@@ -1,20 +1,20 @@
-function fn(){
-        const random = (min, max) => Math.round(Math.random() * (max - min) + min);
-        const xx = (min, max) => `0${random(min, max)}`.substr(-2);
-        const names = 'Алена Светлана Марфа Просковья'.split(' ');
-        const name = names[random(0, names.length - 1)];
-        const surnameList = ('Соколова Иванова Новикова Морозова Лебедева Егорова Козлова Павлова ' + 'Никитина Макарова Захарова Сорокина Ковалева Жукова Баранова Комарова Филиппова Давыдова ' + 'Голубева Журавлева Потапова Овчинникова').split(' ');
-        const surname = surnameList[random(0, (surnameList.length - 1))];
-        const patronymicList = ('Борисовна Ивановна Владимировна Дмитриевна Егоровна Ефимовна Епифановна ' + 'Игоревна Леонидовна Назаровна Олеговна Павловна Степановна Тихоновна Тимофеевна Ульяновна').split(' ');
-        const patronymic = patronymicList[random(0, (patronymicList.length - 1))];
-        const letterOfAttorneyNames = 'Алены Светланы Марфы Просковьи'.split(' ');
-        const letterOfAttorneyName = letterOfAttorneyNames[random(0, names.length - 1)];
-        const letterOfAttorneySurnameList = ('Соколовой Ивановой Новиковой Морозовой Лебедевой Егоровой Козловой Павловой ' + 'Никитиной Макаровой Захаровой Сорокиной Ковалевой Жуковой Барановой Комаровой Филипповой Давыдовой ' + 'Голубевой Журавлевой Потаповой Овчинниковой').split(' ');
-        const letterOfAttorneySurname = letterOfAttorneySurnameList[random(0, (surnameList.length - 1))];
-        const letterOfAttorneyPatronymicList = ('Борисовны Ивановны Владимировны Дмитриевны Егоровны Ефимовны Епифановны ' + 'Игоревны Леонидовны Назаровны Олеговны Павловноы Степановны Тихоновны Тимофеевны Ульяновны').split(' ');
-        const letterOfAttorneyPatronymic = letterOfAttorneyPatronymicList[random(0, (patronymicList.length - 1))];
-        const inputs = Array.from(document.querySelectorAll('input'));
-        inputs.forEach(input => {
+const script = function() {
+    const random = (min, max) => Math.round(Math.random() * (max - min) + min);
+    const xx = (min, max) => `0${random(min, max)}`.substr(-2);
+    const names = 'Алена Светлана Марфа Просковья'.split(' ');
+    const name = names[random(0, names.length - 1)];
+    const surnameList = ('Соколова Иванова Новикова Морозова Лебедева Егорова Козлова Павлова ' + 'Никитина Макарова Захарова Сорокина Ковалева Жукова Баранова Комарова Филиппова Давыдова ' + 'Голубева Журавлева Потапова Овчинникова').split(' ');
+    const surname = surnameList[random(0, (surnameList.length - 1))];
+    const patronymicList = ('Борисовна Ивановна Владимировна Дмитриевна Егоровна Ефимовна Епифановна ' + 'Игоревна Леонидовна Назаровна Олеговна Павловна Степановна Тихоновна Тимофеевна Ульяновна').split(' ');
+    const patronymic = patronymicList[random(0, (patronymicList.length - 1))];
+    const letterOfAttorneyNames = 'Алены Светланы Марфы Просковьи'.split(' ');
+    const letterOfAttorneyName = letterOfAttorneyNames[random(0, names.length - 1)];
+    const letterOfAttorneySurnameList = ('Соколовой Ивановой Новиковой Морозовой Лебедевой Егоровой Козловой Павловой ' + 'Никитиной Макаровой Захаровой Сорокиной Ковалевой Жуковой Барановой Комаровой Филипповой Давыдовой ' + 'Голубевой Журавлевой Потаповой Овчинниковой').split(' ');
+    const letterOfAttorneySurname = letterOfAttorneySurnameList[random(0, (surnameList.length - 1))];
+    const letterOfAttorneyPatronymicList = ('Борисовны Ивановны Владимировны Дмитриевны Егоровны Ефимовны Епифановны ' + 'Игоревны Леонидовны Назаровны Олеговны Павловноы Степановны Тихоновны Тимофеевны Ульяновны').split(' ');
+    const letterOfAttorneyPatronymic = letterOfAttorneyPatronymicList[random(0, (patronymicList.length - 1))];
+    const inputs = Array.from(document.querySelectorAll('input'));
+    inputs.forEach(input => {
             const mapping = {
                 "realtyObjects[0].cadastralNumber":() => '11:22:333333:44',
                 "buyer.person.passport.name.secondName": () => "Тестовый",
@@ -79,4 +79,13 @@ function fn(){
             }
             input.dispatchEvent(event);
         }
-    }
+};
+
+export default {
+    label:"Не эскроу, продавец Юрик",
+    image:"padlock.png",
+    urlsRules: [
+        '/secure-payment-service/deals/.*'
+    ],
+    script: String(script)
+}

@@ -1,5 +1,5 @@
-function fn(){
-        const random = (min, max) => Math.round(Math.random() * (max - min) + min);
+const script = function() {
+    const random = (min, max) => Math.round(Math.random() * (max - min) + min);
         const xx = (min, max) => `0${random(min, max)}`.substr(-2);
         const names = 'Алена Светлана Марфа Просковья'.split(' ');
         const name = names[random(0, names.length - 1)];
@@ -79,4 +79,13 @@ function fn(){
             }
             input.dispatchEvent(event);
         }
-    }
+};
+
+export default {
+    label:"Не эскроу, продавец физик",
+    image:"padlock.png",
+    urlsRules: [
+        '/secure-payment-service/deals/.*'
+    ],
+    script: String(script)
+}

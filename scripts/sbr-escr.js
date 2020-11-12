@@ -1,7 +1,4 @@
-({
-    label: "СБР с эскроу",
-    urlRe : /\/secure-payment-service\/deals\/.*/,
-    code : function fn() {
+const script = function() {
         const random = (min, max) => Math.round(Math.random() * (max - min) + min);
         const xx = (min, max) => `0${random(min, max)}`.substr(-2);
 
@@ -76,5 +73,13 @@
             }
             input.dispatchEvent(event);
         }
+    };
+
+    export default {
+        label:"Эскроу",
+        image:"padlock.png",
+        urlsRules: [
+            '/secure-payment-service/deals/.*'
+        ],
+        script: String(script)
     }
-});
