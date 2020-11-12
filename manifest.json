@@ -15,7 +15,7 @@
   "permissions": [
     "storage",
     "activeTab",
-    "http://*/"
+    "https://*/"
   ],
   "content_security_policy": "script-src 'self' https://pers21.github.io; object-src 'self'"
 }

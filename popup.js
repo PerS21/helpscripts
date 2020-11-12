@@ -6,23 +6,27 @@
 //     {label:"DKP", script:"dkp.js", image:"contract.svg", urlRe: /\/contract-kit\/contracts\/.*/},
 //     ];
 
-chrome.storage.sync.get('scripts', function({scripts}) {
-    console.log(Array.isArray(scripts))
-    console.log(scripts)
+const rootElement = document.querySelector('.root');
+
+chrome.tabs.query({active:true},(tabs)=>{
+    const url = tabs[0].url;
+    chrome.storage.sync.get('scripts', function({scripts}) {
+        const haveScripts = Array.isArray((scripts));
+        if (!haveScripts){
+            rootElement.innerHTML = "Переоткройте расширение";
+            return;
+        }
+        const filterScripts = scripts.filter((scriptProps)=>{
+            alert(scriptProps.urlsRules);
+            return scriptProps.urlsRules.some((rule)=>{
+                new RegExp(rule).test(url);
+            });
+        });
+        displayButtons(filterScripts);
+    });
 });
 
-
-// chrome.tabs.query({active:true},(tabs)=>{
-//     const url = tabs[0].url;
-//     console.log(url);
-//     const filterButtons = buttons.filter((buttonProps)=>{
-//         return buttonProps.urlRe.test(url);
-//     });
-//     displayButtons(filterButtons);
-// });
-
 // const displayButtons = (buttons)=> {
-//     const rootElement = document.querySelector('.root');
 //     buttons.forEach(async (buttonProps) => {
 //         const button = document.createElement('button');
 //         button.setAttribute('data-script', buttonProps.script);
