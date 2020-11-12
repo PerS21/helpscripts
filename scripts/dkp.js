@@ -85,8 +85,8 @@ const script = function() {
 export default {
     label:"DKP",
     image:"padlock.png",
-    test: (url) => {
-        return /\/secure-payment-service\/deals\/.*/.test(url);
-    },
+    test: [
+        '/secure-payment-service/deals/.*'
+    ],
     script: String(script)
 }
