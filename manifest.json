@@ -2,6 +2,7 @@
   "name": "Скрипты",
   "version": "1.0",
   "description": "Скрипты на заполнение",
+  "manifest_version": 2,
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -13,10 +14,8 @@
   },
   "permissions": [
     "activeTab",
-    "http://localhost:5000/",
     "http://*/",
-    "http://192.168.1.70:5000/",
     "storage"
   ],
-  "manifest_version": 2
+  "content_security_policy": "script-src 'self' https://pers21.github.io; object-src 'self'"
 }

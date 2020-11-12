@@ -27,7 +27,7 @@ const displayButtons = (buttons)=> {
         button.prepend(img);
         rootElement.append(button);
 
-        const promise = await fetch(`https://pers21.github.io/helpscripts/filling-scripts/${buttonProps.script}`,{});
+        const promise = await fetch(`https://pers21.github.io/helpscripts/scripts/${buttonProps.script}`, {});
         const body = await promise.text();
         chrome.storage.sync.set({[buttonProps.script]: body}, function() {
         });
@@ -36,6 +36,7 @@ const displayButtons = (buttons)=> {
 
 document.querySelector('.root').addEventListener('click', async (e) => {
     const { target } = e;
+
     if (!target.classList.contains('filler')){
         return
     }
@@ -45,7 +46,3 @@ document.querySelector('.root').addEventListener('click', async (e) => {
         chrome.tabs.executeScript({code:`(${fil})()`});
     });
 });
-
-
-
-
