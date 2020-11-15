@@ -35,23 +35,18 @@ const displayButtons = (scripts)=> {
         img.src = `img/${scriptProps.image}`;
         button.prepend(img);
         rootElement.append(button);
-        //
-        // const promise = await fetch(`https://pers21.github.io/helpscripts/scripts/${scriptProps.script}`, {});
-        // const body = await promise.text();
-        // chrome.storage.sync.set({[scriptProps.script]: body}, function() {
-        // });
     });
 };
 
-// document.querySelector('.root').addEventListener('click', async (e) => {
-//     const { target } = e;
+document.querySelector('.root').addEventListener('click', async (e) => {
+    const { target } = e;
 
-//     if (!target.classList.contains('filler')){
-//         return
-//     }
+    if (!target.classList.contains('filler')){
+        return
+    }
 
-//     chrome.storage.sync.get(target.dataset.script, function(result) {
-//         const fil = result[target.dataset.script];
-//         chrome.tabs.executeScript({code:`(${fil})()`});
-//     });
-// });
+    chrome.storage.local.get(target.dataset.script, function(result) {
+        const fil = target.dataset.script;
+        chrome.tabs.executeScript({code:`(${fil})()`});
+    });
+});
