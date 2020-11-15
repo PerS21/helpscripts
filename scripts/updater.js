@@ -1,6 +1,6 @@
 const CURRENT_VERSION = '2020.11.12-5';
 
-chrome.storage.sync.get('version', async function ({ version }) {
+chrome.storage.locale.get('version', async function ({ version }) {
     if(version === CURRENT_VERSION) {
         return;
     }
@@ -10,6 +10,7 @@ chrome.storage.sync.get('version', async function ({ version }) {
     const { default: sbr_no_escr_entity } = await import('./sbr-no-escr-entity.js');
     const { default: sbr_no_escr_physical } = await import('./sbr-no-escr-physical.js');
     const { default: sbr_no_seller } = await import('./sbr-no-seller.js');
+
 
     chrome.storage.sync.set({
         version: CURRENT_VERSION,

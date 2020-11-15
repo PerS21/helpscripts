@@ -10,19 +10,17 @@ const rootElement = document.querySelector('.root');
 
 chrome.tabs.query({active:true},(tabs)=>{
     const url = tabs[0].url;
-    chrome.storage.sync.get('scripts', function({scripts}) {
+    chrome.storage.locale.get('scripts', function({scripts}) {
         const haveScripts = Array.isArray((scripts));
         if (!haveScripts){
             rootElement.innerHTML = "Переоткройте расширение";
             return;
         }
         const filterScripts = scripts.filter((scriptProps)=>{
-            alert(scriptProps.urlsRules);
-            return scriptProps.urlsRules.some((rule)=>{
+             return scriptProps.urlsRules.some((rule)=>{
                 return new RegExp(rule).test(url);
-            });
+            },scripts);
         });
-        alert(filterScripts);
         displayButtons(filterScripts);
     });
 });
