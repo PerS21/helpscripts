@@ -10,7 +10,7 @@ const rootElement = document.querySelector('.root');
 
 chrome.tabs.query({active:true},(tabs)=>{
     const url = tabs[0].url;
-    chrome.storage.locale.get('scripts', function({scripts}) {
+    chrome.storage.local.get('scripts', function({scripts}) {
         const haveScripts = Array.isArray((scripts));
         if (!haveScripts){
             rootElement.innerHTML = "Переоткройте расширение";
