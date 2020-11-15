@@ -12,7 +12,7 @@ chrome.storage.locale.get('version', async function ({ version }) {
     const { default: sbr_no_seller } = await import('./sbr-no-seller.js');
 
 
-    chrome.storage.sync.set({
+    chrome.storage.locale.set({
         version: CURRENT_VERSION,
         scripts: [
             dkp,
