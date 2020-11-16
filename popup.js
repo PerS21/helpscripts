@@ -1,34 +1,27 @@
-// const buttons = [
-//     {label:"SBR_escr", script:"sbr-escr.js", image:"padlock.png", urlRe: /\/secure-payment-service\/deals\/.*/},
-//     {label:"SBR_noSaller", script:"sbr-noSaller.js", image:"padlock.png", urlRe: /\/secure-payment-service\/deals\/.*/},
-//     {label:"SBR_no_escr_entity", script:"sbr-no-escr-entity.js", image:"padlock.png", urlRe: /\/secure-payment-service\/deals\/.*/},
-//     {label:"SBR_no_escr_physical", script:"sbr-no-escr-physical.js", image:"padlock.png", urlRe: /\/secure-payment-service\/deals\/.*/},
-//     {label:"DKP", script:"dkp.js", image:"contract.svg", urlRe: /\/contract-kit\/contracts\/.*/},
-//     ];
-
 const rootElement = document.querySelector('.root');
 
 chrome.tabs.query({active:true},(tabs)=>{
     const url = tabs[0].url;
     chrome.storage.local.get('scripts', function({scripts}) {
-        const haveScripts = Array.isArray((scripts));
+        const haveScripts = scripts && (Object.keys(scripts).length > 0);
         if (!haveScripts){
             rootElement.innerHTML = "Переоткройте расширение";
             return;
         }
-        const filterScripts = scripts.filter((scriptProps)=>{
+        const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps])=>{
              return scriptProps.urlsRules.some((rule)=>{
                 return new RegExp(rule).test(url);
-            },scripts);
+            });
         });
+        alert(filterScripts);
         displayButtons(filterScripts);
     });
 });
 
 const displayButtons = (scripts)=> {
-    scripts.forEach(async (scriptProps) => {
+    scripts.forEach(async ([scriptId, scriptProps]) => {
         const button = document.createElement('button');
-        button.setAttribute('data-script', scriptProps.script);
+        button.setAttribute('data-script', scriptId);
         button.innerHTML = scriptProps.label;
         button.className = "filler";
         const img = document.createElement('img');
@@ -45,8 +38,8 @@ document.querySelector('.root').addEventListener('click', async (e) => {
         return
     }
 
-    chrome.storage.local.get(target.dataset.script, function(result) {
-        const fil = target.dataset.script;
+    chrome.storage.local.get('scripts', function({scripts}) {
+        const fil = scripts[target.dataset.script];
         chrome.tabs.executeScript({code:`(${fil})()`});
     });
 });

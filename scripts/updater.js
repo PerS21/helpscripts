@@ -14,12 +14,12 @@ chrome.storage.local.get('version', async function ({ version }) {
 
     chrome.storage.local.set({
         version: CURRENT_VERSION,
-        scripts: [
+        scripts: {
             dkp,
             sbr_escr,
             sbr_no_escr_entity,
             sbr_no_escr_physical,
             sbr_no_seller
-        ]
+        }
     });
 });
