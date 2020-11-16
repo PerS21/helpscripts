@@ -1,8 +1,11 @@
 const rootElement = document.querySelector('.root');
+const versionElement = document.querySelector('.version');
+
 
 chrome.tabs.query({active:true},(tabs)=>{
     const url = tabs[0].url;
-    chrome.storage.local.get('scripts', function({scripts}) {
+    chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
+        versionElement.innerHTML = version;
         const haveScripts = scripts && (Object.keys(scripts).length > 0);
         if (!haveScripts){
             rootElement.innerHTML = "Переоткройте расширение";
@@ -13,7 +16,6 @@ chrome.tabs.query({active:true},(tabs)=>{
                 return new RegExp(rule).test(url);
             });
         });
-        alert(filterScripts);
         displayButtons(filterScripts);
     });
 });
@@ -21,7 +23,7 @@ chrome.tabs.query({active:true},(tabs)=>{
 const displayButtons = (scripts)=> {
     scripts.forEach(async ([scriptId, scriptProps]) => {
         const button = document.createElement('button');
-        button.setAttribute('data-script', scriptId);
+        button.setAttribute('data-script-id', scriptId);
         button.innerHTML = scriptProps.label;
         button.className = "filler";
         const img = document.createElement('img');
@@ -39,7 +41,7 @@ document.querySelector('.root').addEventListener('click', async (e) => {
     }
 
     chrome.storage.local.get('scripts', function({scripts}) {
-        const fil = scripts[target.dataset.script];
-        chrome.tabs.executeScript({code:`(${fil})()`});
+        const fil = scripts[target.dataset.scriptId];
+        chrome.tabs.executeScript({code:`(${fil.script})()`});
     });
 });
