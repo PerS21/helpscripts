@@ -4,7 +4,10 @@ const versionElement = document.querySelector('.version');
 
 chrome.tabs.query({active:true},(tabs)=>{
     const url = tabs[0].url;
-    const aaa =
+    aaa();
+});
+
+const aaa =
     chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
         versionElement.innerHTML = version;
         const haveScripts = scripts && (Object.keys(scripts).length > 0);
@@ -13,14 +16,12 @@ chrome.tabs.query({active:true},(tabs)=>{
             return;
         }
         const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps])=>{
-             return scriptProps.urlsRules.some((rule)=>{
+            return scriptProps.urlsRules.some((rule)=>{
                 return new RegExp(rule).test(url);
             });
         });
         displayButtons(filterScripts);
     });
-    aaa();
-});
 
 const displayButtons = (scripts)=> {
     scripts.forEach(async ([scriptId, scriptProps]) => {
