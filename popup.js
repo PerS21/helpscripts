@@ -1,14 +1,9 @@
 const rootElement = document.querySelector('.root');
 const versionElement = document.querySelector('.version');
 
-
 chrome.tabs.query({active:true},(tabs)=>{
-    const url = tabs[0].url;
-    aaa();
-});
-
-const aaa =
     chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
+        const url = tabs[0].url;
         versionElement.innerHTML = version;
         const haveScripts = scripts && (Object.keys(scripts).length > 0);
         if (!haveScripts){
@@ -16,12 +11,13 @@ const aaa =
             return;
         }
         const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps])=>{
-            return scriptProps.urlsRules.some((rule)=>{
+             return scriptProps.urlsRules.some((rule)=>{
                 return new RegExp(rule).test(url);
             });
         });
         displayButtons(filterScripts);
     });
+});
 
 const displayButtons = (scripts)=> {
     scripts.forEach(async ([scriptId, scriptProps]) => {
@@ -41,7 +37,23 @@ chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
     alert(1)
     if (CURRENT_VERSION != version) {
         versionElement.innerHTML = version;
-        aaa();
+        chrome.tabs.query({active:true},(tabs)=>{
+            chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
+                const url = tabs[0].url;
+                versionElement.innerHTML = version;
+                const haveScripts = scripts && (Object.keys(scripts).length > 0);
+                if (!haveScripts){
+                    rootElement.innerHTML = "Переоткройте расширение";
+                    return;
+                }
+                const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps])=>{
+                    return scriptProps.urlsRules.some((rule)=>{
+                        return new RegExp(rule).test(url);
+                    });
+                });
+                displayButtons(filterScripts);
+            });
+        });
     }
 });
 
