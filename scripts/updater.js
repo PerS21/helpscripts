@@ -1,9 +1,10 @@
-const CURRENT_VERSION = '2020.11.17-9';
+const CURRENT_VERSION = '2020.11.17-10';
 
 chrome.storage.local.get('version', async function ({ version }) {
     if(version === CURRENT_VERSION) {
         return;
     }
+
 
     const { default: dkp } = await import('./dkp.js');
     const { default: sbr_escr } = await import('./sbr-escr.js');

@@ -1,6 +1,7 @@
 const rootElement = document.querySelector('.root');
 const versionElement = document.querySelector('.version');
 
+
 chrome.tabs.query({active:true},(tabs)=>{
     chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
         const url = tabs[0].url;
@@ -32,29 +33,10 @@ const displayButtons = (scripts)=> {
     });
 };
 
-const namespace = 'local';
-chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
-    alert(1)
-    if (CURRENT_VERSION != version) {
-        versionElement.innerHTML = version;
-        chrome.tabs.query({active:true},(tabs)=>{
-            chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
-                const url = tabs[0].url;
-                versionElement.innerHTML = version;
-                const haveScripts = scripts && (Object.keys(scripts).length > 0);
-                if (!haveScripts){
-                    rootElement.innerHTML = "Переоткройте расширение";
-                    return;
-                }
-                const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps])=>{
-                    return scriptProps.urlsRules.some((rule)=>{
-                        return new RegExp(rule).test(url);
-                    });
-                });
-                displayButtons(filterScripts);
-            });
-        });
-    }
+chrome.storage.onChanged.addListener(function (changes,area){
+    alert(changes, area);
+    versionElement.innerHTML = version;
+    displayButtons(filterScripts);
 });
 
 
