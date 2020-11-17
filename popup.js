@@ -33,6 +33,10 @@ const displayButtons = (scripts)=> {
     });
 };
 
+chrome.storage.onChanged.addListener(function (CURRENT_VERSION, "local") {
+    alert(1)
+});
+
 document.querySelector('.root').addEventListener('click', async (e) => {
     const { target } = e;
 
