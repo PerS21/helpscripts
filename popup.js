@@ -36,8 +36,10 @@ const displayButtons = (scripts)=> {
 const namespace = 'local';
 chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
     alert(1)
-    versionElement.innerHTML = version;
-    displayButtons(filterScripts);
+    if (CURRENT_VERSION != version) {
+        versionElement.innerHTML = version;
+        displayButtons(filterScripts);
+    }
 });
 
 
