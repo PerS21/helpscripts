@@ -76,7 +76,7 @@ const script = function() {
     };
 
     export default {
-        label:"Эскроуjj",
+        label:"Эскроу",
         image:"padlock.png",
         urlsRules: [
             '/secure-payment-service/deals/.*'

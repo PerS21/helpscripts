@@ -39,8 +39,6 @@ chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
     versionElement.innerHTML = version;
     displayButtons(filterScripts);
 });
-//
-// chrome.storage.on
 
 
 document.querySelector('.root').addEventListener('click', async (e) => {
