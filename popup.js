@@ -4,6 +4,7 @@ const versionElement = document.querySelector('.version');
 
 chrome.tabs.query({active:true},(tabs)=>{
     const url = tabs[0].url;
+    const aaa =
     chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
         versionElement.innerHTML = version;
         const haveScripts = scripts && (Object.keys(scripts).length > 0);
@@ -18,6 +19,7 @@ chrome.tabs.query({active:true},(tabs)=>{
         });
         displayButtons(filterScripts);
     });
+    aaa();
 });
 
 const displayButtons = (scripts)=> {
@@ -38,7 +40,7 @@ chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
     alert(1)
     if (CURRENT_VERSION != version) {
         versionElement.innerHTML = version;
-        displayButtons(filterScripts);
+        aaa();
     }
 });
 
