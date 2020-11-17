@@ -33,7 +33,8 @@ const displayButtons = (scripts)=> {
     });
 };
 
-chrome.storage.onChanged.addListener(function (CURRENT_VERSION, local) {
+const namespace = 'local';
+chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
     alert(1)
 });
 //
