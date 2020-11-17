@@ -36,6 +36,7 @@ const displayButtons = (scripts)=> {
 const namespace = 'local';
 chrome.storage.onChanged.addListener(function (CURRENT_VERSION,namespace){
     alert(1)
+    displayButtons(filterScripts);
 });
 //
 // chrome.storage.on
