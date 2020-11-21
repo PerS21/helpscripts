@@ -1,26 +1,31 @@
 const rootElement = document.querySelector('.root');
 const versionElement = document.querySelector('.version');
 
-
-chrome.tabs.query({active:true},(tabs)=>{
-    chrome.storage.local.get(['scripts', 'version'], function({scripts, version}) {
-        const url = tabs[0].url;
-        versionElement.innerHTML = version;
-        const haveScripts = scripts && (Object.keys(scripts).length > 0);
-        if (!haveScripts){
-            rootElement.innerHTML = "Переоткройте расширение";
-            return;
-        }
-        const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps])=>{
-             return scriptProps.urlsRules.some((rule)=>{
-                return new RegExp(rule).test(url);
+const update = ()=>{
+    chrome.tabs.query({active:true},(tabs)=> {
+        chrome.storage.local.get(['scripts', 'version'], function ({scripts, version}) {
+            const url = tabs[0].url;
+            versionElement.innerHTML = version;
+            console.log(version);
+            const haveScripts = scripts && (Object.keys(scripts).length > 0);
+            if (!haveScripts) {
+                rootElement.innerHTML = "Переоткройте расширение";
+                return;
+            }
+            const filterScripts = Object.entries(scripts).filter(([scriptId, scriptProps]) => {
+                return scriptProps.urlsRules.some((rule) => {
+                    return new RegExp(rule).test(url);
+                });
             });
+            displayButtons(filterScripts);
         });
-        displayButtons(filterScripts);
     });
-});
+};
+
+update();
 
 const displayButtons = (scripts)=> {
+    rootElement.innerHTML = '';
     scripts.forEach(async ([scriptId, scriptProps]) => {
         const button = document.createElement('button');
         button.setAttribute('data-script-id', scriptId);
@@ -33,11 +38,19 @@ const displayButtons = (scripts)=> {
     });
 };
 
+
+
 chrome.storage.onChanged.addListener(function (changes,area){
-    alert(changes, area);
-    versionElement.innerHTML = version;
-    displayButtons(filterScripts);
+    if (area === 'local' && changes.version) {
+        update();
+    }
 });
+
+setTimeout(()=>{
+    chrome.storage.local.set({
+        version : '10'
+    });
+},2000);
 
 
 document.querySelector('.root').addEventListener('click', async (e) => {
