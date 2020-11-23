@@ -1,0 +1,18 @@
+{
+  "name": "helpscripts",
+  "version": "1.0.0",
+  "description": "Раcширение для заполнения форм m2",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.m2.ru/perepelkinsr/helpscripts"
+  },
+  "author": "perepelkinsr",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "tailwindcss": "^2.0.1",
+    "tailwindcss-cli": "^0.1.2"
+  }
+}

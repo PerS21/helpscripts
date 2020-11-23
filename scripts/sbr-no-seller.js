@@ -67,7 +67,6 @@ const script = function() {
 
 export default {
     label:"Без продавца",
-    image:"padlock.png",
     urlsRules: [
         '/secure-payment-service/deals/.*'
     ],

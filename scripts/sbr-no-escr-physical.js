@@ -83,7 +83,6 @@ const script = function() {
 
 export default {
     label:"Не эскроу, продавец физик",
-    image:"padlock.png",
     urlsRules: [
         '/secure-payment-service/deals/.*'
     ],

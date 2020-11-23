@@ -5,7 +5,7 @@ const update = ()=>{
     chrome.tabs.query({active:true},(tabs)=> {
         chrome.storage.local.get(['scripts', 'version'], function ({scripts, version}) {
             const url = tabs[0].url;
-            versionElement.innerHTML = version;
+            versionElement.innerHTML = `<span class="text-gray-400">${version}</span>`;
             console.log(version);
             const haveScripts = scripts && (Object.keys(scripts).length > 0);
             if (!haveScripts) {
@@ -30,10 +30,7 @@ const displayButtons = (scripts)=> {
         const button = document.createElement('button');
         button.setAttribute('data-script-id', scriptId);
         button.innerHTML = scriptProps.label;
-        button.className = "filler";
-        const img = document.createElement('img');
-        img.src = `img/${scriptProps.image}`;
-        button.prepend(img);
+        button.className = "btn filler";
         rootElement.append(button);
     });
 };
@@ -45,13 +42,6 @@ chrome.storage.onChanged.addListener(function (changes,area){
         update();
     }
 });
-
-setTimeout(()=>{
-    chrome.storage.local.set({
-        version : '10'
-    });
-},2000);
-
 
 document.querySelector('.root').addEventListener('click', async (e) => {
     const { target } = e;

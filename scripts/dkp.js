@@ -84,7 +84,6 @@ const script = function() {
 
 export default {
     label:"DKP",
-    image:"padlock.png",
     urlsRules: [
         '/contract-kit/contracts/.*'
     ],
